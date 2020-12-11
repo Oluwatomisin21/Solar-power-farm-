@@ -16,7 +16,7 @@ def d_angle(N):
 
  
 # Solar model calculates hour angle
-# Equation:2.9
+# Equation:2.9  
 def h_angle(N,hour,minute):
     B=((360/365)*(N-81))
     LSTM=15
@@ -24,15 +24,8 @@ def h_angle(N,hour,minute):
     TC=4*(3.947-LSTM)+EoT
     AST=((hour+minute/60)+(TC/60))
     hangle=(AST-12)*15
-   
-    if type(hangle)=='pandas.core.series.Series':
-        if (hour.values==7) or (hour.values==19)\
-            or (hour.values==6) or (hour.values==18)\
-            or (hour.values==5) or (hour.values==17):
- 
-    
-            hangle[hangle<0]=180+hangle
-            hangle[hangle>0]=180-hangle
+    hangle[hangle<0]=180+hangle
+    hangle[hangle>0]=180-hangle
     return hangle
 
       
